@@ -1,0 +1,59 @@
+
+<!DOCTYPE html><html><head><meta charset="UTF-8">
+<style>
+body{margin:0;background:#101018;color:white;font-family:Arial;overflow:hidden}
+.page{display:none;height:100vh;position:relative}
+.show{display:block}
+.center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
+.ele{font-size:160px;cursor:pointer;animation:bounce 1s infinite}
+@keyframes bounce{50%{transform:translateY(-20px)}}
+#poop{display:none;font-size:90px;position:absolute;left:50%;top:55%;transform:translateX(-50%)}
+#letter{display:none;font-size:60px;cursor:pointer;position:absolute;left:53%;top:70%}
+.popup{display:none;position:absolute;inset:8%;background:white;color:black;padding:30px;border-radius:20px;overflow:auto}
+</style></head>
+<body>
+
+<div id=p1 class="page show">
+<div class=center>
+<h1>🐘 CHOTE HATHI 🐘</h1>
+<h2>Click Arayna Elephant</h2>
+<div class=ele onclick="go2()">🐘<br><small>ARAYNA</small></div>
+</div>
+</div>
+
+<div id=p2 class=page>
+<div class=center>
+<h1>Find the secret...</h1>
+<div id=ele2 class=ele onclick="start()">🐘</div>
+<div>Click elephant again</div>
+</div>
+<div id=poop>💩</div>
+<div id=letter onclick="openLetter()">📜</div>
+
+<div id=popup class=popup>
+<h1>LETTER FOUND 📜</h1>
+<p>
+Haalooo Dear chote hathi arayna how are u? i am really solly for all i have done...
+recently ive been goin through a lot isliye share ni kr paya kuch or ulta seedha bol dia tujhe.
+Tu bahut acchi hai, meri real bahen jaisi. You are one of a kind. I am rally solly for all the bad things I've said but I won't stop teasing you 😭 yay ba babiye!
+<br><br>
+<b>- krishna da GOAT 🐐</b>
+</p>
+<button onclick="popup.style.display='none'">close</button>
+</div>
+</div>
+
+<script>
+function go2(){p1.classList.remove('show'); p2.classList.add('show')}
+function start(){
+ let e=document.getElementById('ele2');
+ let y=0;
+ let anim=setInterval(()=>{
+   y+=8; e.style.transform='translateY('+Math.sin(y/10)*10+'px)';
+   if(y>120){ clearInterval(anim); poop.style.display='block';
+      setTimeout(()=>{letter.style.display='block'; letter.innerHTML='📜 SECRET LETTER';},900);}
+ },60);
+}
+function openLetter(){popup.style.display='block'}
+</script>
+</body></html>
